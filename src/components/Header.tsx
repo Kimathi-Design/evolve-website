@@ -178,3 +178,49 @@ export default function Header() {
     </header>
   );
 }
+
+                ) : (
+                  <Menu className="w-5 h-5" />
+                )}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Navigation */}
+                  {isMenuOpen && (
+            <div className="md:hidden">
+              <div 
+                className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white dark:bg-[#040711] border-t border-gray-200 dark:border-primary"
+                style={{ 
+                  backgroundColor: theme === 'dark' ? 'rgb(4, 7, 17)' : '#ffffff',
+                  borderColor: theme === 'dark' ? '#4fa58c' : 'rgb(229, 231, 235)'
+                }}
+              >
+              {navigation.map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className="text-gray-900 dark:text-white hover:text-primary dark:hover:text-primary block px-3 py-2 text-base font-medium transition-colors duration-200"
+                  style={{ color: theme === 'dark' ? '#ffffff' : 'rgb(17, 24, 39)' }}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item.name}
+                </Link>
+              ))}
+              {/* Mobile Get in Touch Button */}
+              <Link
+                href="/contact"
+                className="flex items-center justify-center gap-2 mx-3 mt-4 px-4 py-3 bg-primary hover:bg-primary/90 text-white rounded-lg transition-colors duration-200 text-base font-medium"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Get in Touch
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </div>
+        )}
+      </nav>
+    </header>
+  );
+}

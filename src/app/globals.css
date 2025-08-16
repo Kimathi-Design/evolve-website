@@ -1,167 +1,438 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Mooli:wght@400;500;600;700&display=swap&font-display=swap');
+@import "tailwindcss";
 
-/* Mooli Font from Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Mooli&display=swap');
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --primary: #4fa58c;
-  --primary-foreground: #ffffff;
-  --secondary: #000000;
-  --secondary-foreground: #ffffff;
-  --accent: #ff6b35;
-  --accent-foreground: #ffffff;
-  --muted: #f5f5f5;
-  --muted-foreground: #737373;
-  --card: #ffffff;
-  --card-foreground: #171717;
-  --border: #e5e5e5;
-  --input: #e5e5e5;
-  --ring: #4fa58c;
-}
-
-.dark {
-  --background: #040711;
-  --foreground: #ffffff;
-  --primary: #4fa58c;
-  --primary-foreground: #ffffff;
-  --secondary: #121827;
-  --secondary-foreground: #ffffff;
-  --accent: #ff6b35;
-  --accent-foreground: #ffffff;
-  --muted: #262626;
-  --muted-foreground: #a3a3a3;
-  --card: #121827;
-  --card-foreground: #ffffff;
-  --border: #4fa58c;
-  --input: #262626;
-  --ring: #4fa58c;
-}
-
-* {
-  border-color: hsl(var(--border));
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: 'Mooli', 'Inter', system-ui, sans-serif !important;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-  min-height: 100vh;
-  min-height: -webkit-fill-available; /* iOS Safari viewport fix */
-}
-
-/* Ensure Mooli font applies to all text elements */
-h1, h2, h3, h4, h5, h6, p, span, div, a, button, input, textarea, label {
-  font-family: 'Mooli', 'Inter', system-ui, sans-serif !important;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-/* Custom scrollbar for webkit browsers */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  background: rgba(156, 163, 175, 0.5);
-  border-radius: 4px;
-}
-
-.dark ::-webkit-scrollbar-thumb {
-  background: rgba(79, 165, 140, 0.5);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(156, 163, 175, 0.8);
-}
-
-.dark ::-webkit-scrollbar-thumb:hover {
-  background: rgba(79, 165, 140, 0.8);
-}
-
-/* Firefox scrollbar */
-html {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(156, 163, 175, 0.5) transparent;
-}
-
-.dark html {
-  scrollbar-color: rgba(79, 165, 140, 0.5) transparent;
-}
-
-/* Force theme overrides for cross-browser compatibility */
-html, html * {
+/* Force theme override - ignore system preferences completely */
+html[data-theme-override="true"] {
   color-scheme: light !important;
 }
 
-html.dark, html.dark * {
+html[data-theme-override="true"].dark {
   color-scheme: dark !important;
 }
 
-/* Override system preferences */
+/* Ensure our theme classes take precedence over system */
+html.light {
+  color-scheme: light !important;
+}
+
+html.dark {
+  color-scheme: dark !important;
+}
+
+/* Override any browser dark mode detection */
 @media (prefers-color-scheme: dark) {
-  html[data-theme="light"], html[data-theme="light"] *,
-  body[data-theme="light"], body[data-theme="light"] * {
+  html:not(.dark) {
     color-scheme: light !important;
   }
 }
 
 @media (prefers-color-scheme: light) {
-  html[data-theme="dark"], html[data-theme="dark"] *,
-  body[data-theme="dark"], body[data-theme="dark"] * {
+  html.dark {
     color-scheme: dark !important;
   }
 }
 
-/* Override for forced theme */
-html[data-theme-override="true"] {
-  color-scheme: var(--color-scheme, light) !important;
+/* Force our theme to work regardless of system settings */
+html.light,
+html.light * {
+  color-scheme: light !important;
 }
 
-/* Mobile optimization */
-@media (max-width: 768px) {
+html.dark,
+html.dark * {
+  color-scheme: dark !important;
+}
+
+/* CSS Variables for Light and Dark modes */
+:root {
+  /* Brand Colors */
+  --primary: #4fa58c;
+  --primary-light: #6BB5A3;
+  --primary-dark: #3C8576;
+  --accent: #FF6B35;
+  --accent-light: #FF8355;
+  --accent-dark: #E55A2B;
+
+  /* Light Mode Colors */
+  --background: #ffffff;
+  --surface: #f9fafb;
+  --foreground: #111827;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --input: #ffffff;
+  --card: #ffffff;
+  --card-foreground: #111827;
+  --popover: #ffffff;
+  --popover-foreground: #111827;
+  --muted-foreground: #6b7280;
+  --secondary: #f3f4f6;
+  --secondary-foreground: #111827;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --ring: #4fa58c;
+}
+
+.dark {
+  /* Dark Mode Colors */
+  --background: #040711;
+  --surface: #040711;
+  --foreground: #ffffff;
+  --muted: #6b7280;
+  --border: #4fa58c;
+  --input: #121827;
+  --card: #121827;
+  --card-foreground: #ffffff;
+  --popover: #121827;
+  --popover-foreground: #ffffff;
+  --muted-foreground: #ffffff;
+  --secondary: #121827;
+  --secondary-foreground: #ffffff;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --ring: #4fa58c;
+}
+
+* {
+  border-color: var(--border);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Mooli', ui-sans-serif, system-ui, sans-serif;
+  font-feature-settings: "rlig" 1, "calt" 1;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--muted);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #4fa58c;
+}
+
+/* Focus styles for accessibility */
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Selection styles */
+::selection {
+  background-color: var(--primary);
+  color: white;
+}
+
+/* Typography enhancements */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Mooli', ui-sans-serif, system-ui, sans-serif;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* Animation utilities */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Gradient text effect */
+.gradient-text {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Cross-browser compatibility fixes */
+/* iOS Safari viewport units fix */
+.min-h-screen {
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+}
+
+/* Firefox scrollbar fallback */
+@-moz-document url-prefix() {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--muted) var(--surface);
+  }
+}
+
+/* IE/Edge backdrop-filter fallback */
+@supports not (backdrop-filter: blur(10px)) {
+  .backdrop-blur-md {
+    background-color: rgba(255, 255, 255, 0.95) !important;
+  }
+  .dark .backdrop-blur-md {
+    background-color: rgba(4, 7, 17, 0.95) !important;
+  }
+}
+
+/* Safari font rendering optimization */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Input field cross-browser styling */
+input, textarea, select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* Button cross-browser styling */
+button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* Prevent zoom on mobile input focus */
+@media screen and (max-width: 768px) {
   input, textarea, select {
-    font-size: 16px !important; /* Prevent zoom on iOS */
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-  }
-  
-  button {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
+    font-size: 16px !important;
   }
 }
 
-/* Safari specific fixes */
-@supports (-webkit-backdrop-filter: none) {
-  .backdrop-blur-sm {
-    -webkit-backdrop-filter: blur(4px);
+/* Custom button styles */
+.btn-primary {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:hover {
+  background: var(--accent-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.btn-secondary {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background: var(--primary-dark);
+}
+
+/* Loading spinner */
+.loading-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #f3f3f3;
+  border-top: 2px solid var(--primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.dark .loading-spinner {
+  border: 2px solid #121827;
+  border-top: 2px solid var(--primary);
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Hero section background overlay */
+.hero-overlay {
+  background: linear-gradient(135deg, rgba(79, 165, 140, 0.8), rgba(79, 165, 140, 0.6));
+}
+
+/* Card hover effects */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Form styling */
+.form-input {
+  background: var(--input);
+  border: 1px solid var(--border);
+  color: var(--foreground);
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(77, 161, 141, 0.1);
+}
+
+/* Logo carousel animation */
+@keyframes scroll-x {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
   }
 }
 
-/* Fallback for browsers that don't support backdrop-filter */
-@supports not (backdrop-filter: blur()) {
-  .backdrop-blur-sm {
-    background-color: rgba(255, 255, 255, 0.8);
+.animate-scroll-x {
+  animation: scroll-x 30s linear infinite;
+}
+
+/* Responsive text sizes */
+@media (max-width: 640px) {
+  h1 {
+    font-size: 2rem;
   }
-  
-  .dark .backdrop-blur-sm {
-    background-color: rgba(4, 7, 17, 0.8);
+  h2 {
+    font-size: 1.75rem;
+  }
+  h3 {
+    font-size: 1.5rem;
+  }
+}
+
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:hover {
+  background: var(--accent-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.btn-secondary {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background: var(--primary-dark);
+}
+
+/* Loading spinner */
+.loading-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #f3f3f3;
+  border-top: 2px solid var(--primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.dark .loading-spinner {
+  border: 2px solid #121827;
+  border-top: 2px solid var(--primary);
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Hero section background overlay */
+.hero-overlay {
+  background: linear-gradient(135deg, rgba(79, 165, 140, 0.8), rgba(79, 165, 140, 0.6));
+}
+
+/* Card hover effects */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Form styling */
+.form-input {
+  background: var(--input);
+  border: 1px solid var(--border);
+  color: var(--foreground);
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(77, 161, 141, 0.1);
+}
+
+/* Logo carousel animation */
+@keyframes scroll-x {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll-x {
+  animation: scroll-x 30s linear infinite;
+}
+
+/* Responsive text sizes */
+@media (max-width: 640px) {
+  h1 {
+    font-size: 2rem;
+  }
+  h2 {
+    font-size: 1.75rem;
+  }
+  h3 {
+    font-size: 1.5rem;
   }
 }

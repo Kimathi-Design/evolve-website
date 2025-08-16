@@ -2,7 +2,7 @@
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-// import CookieConsent from "@/components/CookieConsent";
+import CookieConsent from "@/components/CookieConsent";
 import ThemeProvider from "@/components/ThemeProvider";
 
 interface ClientLayoutProps {
@@ -19,7 +19,7 @@ export default function ClientLayout({ children }: ClientLayoutProps) {
         </main>
         <Footer />
       </div>
-      {/* <CookieConsent /> */}
+      <CookieConsent />
     </ThemeProvider>
   );
 }

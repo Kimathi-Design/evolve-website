@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-// import Image from 'next/image';
+import Image from 'next/image';
 import { ArrowRight, TrendingUp } from 'lucide-react';
 
 interface CaseStudy {
@@ -42,10 +42,11 @@ export default function CaseCard({
     return (
       <div className={`bg-white dark:bg-[#121827] dark:border dark:border-primary rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 overflow-hidden ${className}`}>
         <div className="relative h-40">
-          <img
+          <Image
             src={image}
             alt={`${client} case study`}
-            className="w-full h-full object-cover"
+            fill
+            className="object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
           <div className="absolute bottom-3 left-3 text-white">
@@ -64,10 +65,11 @@ export default function CaseCard({
     return (
       <div className={`bg-white dark:bg-gray-900 rounded-xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 group ${className}`}>
         <div className="relative h-64 overflow-hidden">
-          <img
+          <Image
             src={image}
             alt={`${client} case study`}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            fill
+            className="object-cover group-hover:scale-105 transition-transform duration-300"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
           <div className="absolute bottom-4 left-4 text-white">
@@ -133,10 +135,11 @@ export default function CaseCard({
   return (
     <div className={`bg-white dark:bg-[#121827] dark:border dark:border-primary rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group ${className}`}>
       <div className="relative h-48 overflow-hidden">
-        <img
+        <Image
           src={image}
           alt={`${client} case study`}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          fill
+          className="object-cover group-hover:scale-105 transition-transform duration-300"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
         <div className="absolute bottom-3 left-3 text-white">

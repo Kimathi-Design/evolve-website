@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-// Removed Image import for static export
+import Image from 'next/image';
 import { Linkedin, Mail, Twitter } from 'lucide-react';
 
 interface TeamMember {
@@ -42,10 +42,11 @@ export default function TeamCard({
     return (
       <div className={`bg-white dark:bg-[#121827] dark:border dark:border-primary rounded-lg shadow-md overflow-hidden text-center ${className}`}>
         <div className="relative w-16 h-16 mx-auto mt-4">
-          <img
+          <Image
             src={image}
             alt={name}
-            className="w-full h-full object-cover rounded-full"
+            fill
+            className="object-cover rounded-full"
           />
         </div>
         <div className="p-4">
@@ -60,10 +61,11 @@ export default function TeamCard({
     return (
       <div className={`bg-white dark:bg-[#121827] dark:border dark:border-primary rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 ${className}`}>
         <div className="relative h-64 overflow-hidden">
-          <img
+          <Image
             src={image}
             alt={name}
-            className="w-full h-full object-cover"
+            fill
+            className="object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
           <div className="absolute bottom-4 left-4 text-white">
@@ -140,10 +142,11 @@ export default function TeamCard({
   return (
     <div className={`bg-white dark:bg-[#121827] dark:border dark:border-primary rounded-lg shadow-lg overflow-hidden text-center hover:shadow-xl transition-shadow duration-300 group ${className}`}>
       <div className="relative h-48 overflow-hidden">
-        <img
+        <Image
           src={image}
           alt={name}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          fill
+          className="object-cover group-hover:scale-105 transition-transform duration-300"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
       </div>
