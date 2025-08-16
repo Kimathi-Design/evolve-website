@@ -55,9 +55,10 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ["var(--font-geist-sans)", "Inter", "system-ui", "sans-serif"],
-        mono: ["var(--font-geist-mono)", "Fira Code", "monospace"],
+        sans: ["Mooli", "var(--font-inter)", "Inter", "system-ui", "sans-serif"],
+        mono: ["Fira Code", "monospace"],
         mooli: ["Mooli", "sans-serif"],
+        inter: ["var(--font-inter)", "Inter", "system-ui", "sans-serif"],
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
