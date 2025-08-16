@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Mooli:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mooli&display=swap');
 
 :root {
   --background: #ffffff;
@@ -47,13 +47,18 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: 'Mooli', 'Inter', system-ui, sans-serif;
+  font-family: 'Mooli', 'Inter', system-ui, sans-serif !important;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   min-height: 100vh;
   min-height: -webkit-fill-available; /* iOS Safari viewport fix */
+}
+
+/* Ensure Mooli font applies to all text elements */
+h1, h2, h3, h4, h5, h6, p, span, div, a, button, input, textarea, label {
+  font-family: 'Mooli', 'Inter', system-ui, sans-serif !important;
 }
 
 html {
