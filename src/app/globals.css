@@ -2,15 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Local Mooli Font */
-@font-face {
-  font-family: 'Mooli';
-  src: url('/fonts/mooli.woff2') format('woff2'),
-       url('/fonts/mooli.woff') format('woff');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
+/* Mooli Font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Mooli&display=swap');
 
 :root {
   --background: #ffffff;
