@@ -19,7 +19,7 @@ export default function ClientLayout({ children }: ClientLayoutProps) {
         </main>
         <Footer />
       </div>
-      <CookieConsent />
+      {/* <CookieConsent /> */}
     </ThemeProvider>
   );
 }

@@ -153,14 +153,3 @@ const caseStudies = [
     href: "/case-studies/africa-touch-safaris"
   }
 ];
-
-    title: "Corporate Travel Market Leadership", 
-    client: "ATS Travels",
-    image: "/images/case_ats.jpg",
-    challenge: "Increase brand awareness and recognizability to compete with the top three business and corporate travel agencies in the market",
-    result: "Won World Travel Awards, enhanced brand credibility through exclusive networking events, and established strong market position in corporate travel sector",
-    metrics: "Won WTA award, enhanced brand visibility",
-    tags: ["Brand Strategy", "Travel Industry", "Award Campaigns", "Corporate Networking"],
-    href: "/case-studies/africa-touch-safaris"
-  }
-];
