@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-// import Image from 'next/image';
+// Removed Image import for static export
 import { Linkedin, Mail, Twitter } from 'lucide-react';
 
 interface TeamMember {
@@ -42,11 +42,10 @@ export default function TeamCard({
     return (
       <div className={`bg-white dark:bg-[#121827] dark:border dark:border-primary rounded-lg shadow-md overflow-hidden text-center ${className}`}>
         <div className="relative w-16 h-16 mx-auto mt-4">
-          <Image
+          <img
             src={image}
             alt={name}
-            fill
-            className="object-cover rounded-full"
+            className="w-full h-full object-cover rounded-full"
           />
         </div>
         <div className="p-4">
@@ -61,11 +60,10 @@ export default function TeamCard({
     return (
       <div className={`bg-white dark:bg-[#121827] dark:border dark:border-primary rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 ${className}`}>
         <div className="relative h-64 overflow-hidden">
-          <Image
+          <img
             src={image}
             alt={name}
-            fill
-            className="object-cover"
+            className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
           <div className="absolute bottom-4 left-4 text-white">
