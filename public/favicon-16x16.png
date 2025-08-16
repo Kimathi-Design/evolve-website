@@ -1,0 +1,13 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="16" cy="16" r="14" fill="#4DA18D"/>
+  <!-- Evolution arrows/links -->
+  <path d="M9 12 L12 9 L15 12 L18 9 L21 12" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M9 16 L21 16" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M9 20 L12 23 L15 20 L18 23 L21 20" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Connection dots -->
+  <circle cx="12" cy="12" r="1" fill="white"/>
+  <circle cx="18" cy="12" r="1" fill="white"/>
+  <circle cx="12" cy="20" r="1" fill="white"/>
+  <circle cx="18" cy="20" r="1" fill="white"/>
+</svg>
